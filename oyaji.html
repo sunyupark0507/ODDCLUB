@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- 타이틀에 캐릭터 이름을 추가해 주면 좋습니다 -->
+    <title>우리는 왜 완벽하지 않은 것에 환호하는가? - 듀 가나디</title>
+    <link rel="stylesheet" href="myStyle.css">
+    <script src="myScript.js" defer></script>
+</head>
+<body>
+    <!-- 공통 헤더 -->
+    <header>
+        <div class="logobox">
+           <a href="index.html#mainContainer">
+                <img src="img/oddclubB.png" alt="오드클럽">
+            </a>
+        </div>
+    </header>
+
+    <!-- 캐릭터 섹션 (이 페이지의 주인공 하나만 남깁니다) -->
+    <div id="charContainer">
+        <section id="oyaji" class="char-section">
+            <div class="oyaji-container" id="oyajiContainer">
+                <div class="hint-bubble">머리카락을 당겨보세요!</div>
+                <!-- 오야지치 설명 텍스트 -->
+                <div class="oyaji-desc">
+                    <h2>오야지치 (Oyajitchi)</h2>
+                    <h3>아저씨의 얼굴을 한 엉뚱한 다마고치</h3>
+                    <p>
+                        1997년 반다이의 게임 ‘신종발견! 다마고치’에서 처음 등장한 히든 캐릭터로, <br class="m-br">일본어로 아저씨를 뜻하는 ‘오야지’에서 이름을 따왔다.<br>
+                        둥근 살구색 몸통에 곱슬거리는 머리카락 한 가닥, 까만 콧수염과 가느다란 다리가 특징이다. 귀여운 캐릭터들 사이에서<br class="pc-br"> 혼자 중년 아저씨의 모습을 하고 있는 독특한 외형이 눈길을 끈다.
+                    </p>
+                    <p>
+                        엉뚱한 행동으로 웃음을 주다가도 때로는 인생의 연륜이 담긴 조언을 건네는 반전 매력의 소유자.<br class="pc-br">
+                        어딘가 촌스럽고 하찮지만 묘하게 정감 가는 모습으로, <br class="m-br">최근에는 인형 키링과 파우치 등 다양한 굿즈로도 사랑받고 있다.
+                    </p>
+                </div>
+
+                <!-- 머리카락 인터랙션을 그릴 캔버스 -->
+                <canvas id="hairCanvas"></canvas>
+
+                <!-- 이미지 (기본은 머리카락 없는 민머리 이미지 권장) -->
+                <img src="img/oyaji.png" alt="오야지치 기본" class="oyaji-normal">
+                <img src="img/angryOyaji.png" alt="오야지치 화남" class="oyaji-angry">
+
+            </div>
+        </section>
+    </div>
+
+    
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>한경국립대학교 디자인예술스포츠학부 시각미디어디자인 | 박선유, 황혜원 | 지도교수 나상호</p>
+            <p>이 웹사이트는 디지털퍼블리싱2 수업의 일환으로 제작되었습니다. Copyright@Park Sunyu, Hwang Hyewon</p>
+        </div>
+    </footer>
+</body>
+</html>

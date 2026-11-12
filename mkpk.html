@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- 타이틀에 캐릭터 이름을 추가해 주면 좋습니다 -->
+    <title>우리는 왜 완벽하지 않은 것에 환호하는가? - 듀 가나디</title>
+    <link rel="stylesheet" href="myStyle.css">
+    <script src="myScript.js" defer></script>
+</head>
+
+<body>
+    <!-- 공통 헤더 -->
+    <header>
+        <div class="logobox">
+            <a href="index.html#mainContainer">
+                <img src="img/oddclubB.png" alt="오드클럽">
+            </a>
+        </div>
+    </header>
+
+    <!-- 캐릭터 섹션 (이 페이지의 주인공 하나만 남깁니다) -->
+    <div id="charContainer">
+        <section id="mkpk" class="char-section">
+            <div class="mkpk-container">
+                <!-- 힌트 말풍선 (이미지 바로 위쯤에 뜨도록 위치 조정) -->
+                <div class="hint-bubble">돌멩이를 문질러 닦아주세요!</div>
+
+                <!-- 텍스트 영역 (상단 중앙) -->
+                <div class="mkpk-desc">
+                    <h2>매카패카 (Makka Pakka)</h2>
+                    <span class="sub-title">돌멩이를 사랑하는 엉뚱하고 사랑스러운 친구</span>
+                    <p>2007년 영국에서 방영된 어린이 TV 프로그램 ‘꿈나라 꿈동산(In the Night Garden)’에 등장하는 캐릭터로,
+                        <br class="pc-br">정원 한쪽의 작은 동굴에 살고 있다.
+                        베이지색의 둥글고 통통한 몸에 짧은 팔다리, 머리 위에 돌멩이를 쌓아 올린 듯한 독특한 외형이 특징이다.
+                        무표정에 가까운 얼굴과 느릿느릿한 움직임이 어딘가 엉뚱하고 하찮은 매력을 자아낸다.<br class="pc-br">
+                        매카패카의 가장 큰 취미는 돌멩이를 모아 깨끗하게 씻고 가지런히 쌓아두는 것.<br class="pc-br">
+                        비누와 스펀지를 실은 수레를 끌고 다니며 친구들의 얼굴까지 씻어주는 독특한 습관을 가지고 있다.
+                    </p>
+                </div>
+
+                <!-- 이미지 영역 (하단 중앙) -->
+                <div class="image-group">
+                    <!-- 1층: 매카패카 얼굴 -->
+                    <img src="img/mkpk.png" alt="매카패카" class="mkpk-img">
+
+                    <!-- 2, 3층 묶음: 돌멩이 그룹 -->
+                    <div class="stone-group">
+                        <!-- 2층: 깨끗한 돌멩이 이미지 (경로 주의!) -->
+                        <img src="img/mkpkStone.png" alt="깨끗한 돌멩이" class="clean-stone-img">
+
+                        <!-- 3층: 닦을 캔버스 (여기에 더러운 돌멩이 이미지가 덮임) -->
+                        <canvas id="dirtCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>한경국립대학교 디자인예술스포츠학부 시각미디어디자인 | 박선유, 황혜원 | 지도교수 나상호</p>
+            <p>이 웹사이트는 디지털퍼블리싱2 수업의 일환으로 제작되었습니다. Copyright@Park Sunyu, Hwang Hyewon</p>
+        </div>
+    </footer>
+</body>
+
+</html>

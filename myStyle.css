@@ -1,0 +1,2708 @@
+@font-face {
+    font-family: 'NostalgicGukhanbakLovely';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2607161334@x-10/x/GriunXHangeulSarangseureoun-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OngleipKonkon';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+
+body {
+    background-color: #ffffff;
+    background-image: url('img/paper.png');
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9999;
+    width: 1420px;
+    height: 100px;
+    display: flex;
+    gap: 10px;
+}
+
+.logobox {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-content: start;
+}
+
+#introContainer,
+#mainContainer,
+.char-section,
+#outroContainer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    /* 🔥 한 번 휠을 굴릴 때 여러 섹션을 건너뛰지 않고 딱 한 섹션씩만 멈추게 함 */
+}
+
+#footer {
+    scroll-snap-align: end;
+}
+
+#introContainer,
+#outroContainer {
+    width: 1420px;
+    height: 1080px;
+    margin: 0 auto;
+    background-image: url('img/mainback.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-content: start;
+}
+
+
+#mainContainer {
+    width: 1420px;
+    height: 1080px;
+    margin: 0 auto;
+    background-image: url('img/mainOpacity.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-content: start;
+}
+
+#introContainer .text-flex-container img.wobble-target {
+    position: relative;
+    transform: none;
+    /* translate(-50%, -50%) 강제 이동 해제 */
+    /* top, left 값은 .p1 ~ .p7 클래스에서 지정한 값을 따르게 됨 */
+}
+
+/* 그룹 전체 영역 설정 */
+.title-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+}
+
+/* 베이스 배경 이미지 중앙 정렬 */
+.base-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+/* 🔥 글자들을 가로로 나열하는 묶음 상자 */
+.text-flex-container {
+    position: absolute;
+    top: 48%;
+    /* 원본 위치에 맞게 전체 그룹의 기준 높이 설정 */
+    left: 20%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    /* 간격은 개별 요소의 left 값으로 세밀하게 조정하기 위해 0으로 둡니다 */
+    z-index: 20;
+}
+
+/* 🔥 1번 이미지 스케치를 바탕으로 한 개별 위치 계산값 */
+.p1 {
+    position: relative;
+    top: 20px;
+    left: -10px;
+}
+
+/* 완 : 살짝 아래로, 왼쪽으로 치우침 */
+.p2 {
+    position: relative;
+    top: -30px;
+    left: -5px;
+}
+
+/* 벽 : 확 위로 솟음 */
+.p3 {
+    position: relative;
+    top: 10px;
+    left: 0px;
+}
+
+/* 하 : 중간에서 약간 아래 */
+.p4 {
+    position: relative;
+    top: 30px;
+    left: 5px;
+}
+
+/* 지 : 상당히 아래로 내려감 */
+.p5 {
+    position: relative;
+    top: -15px;
+    left: 10px;
+}
+
+/* 않 : 다시 위로 솟음 */
+.p6 {
+    position: relative;
+    top: 15px;
+    left: 15px;
+}
+
+/* 은 : 살짝 아래로 */
+.p7 {
+    position: relative;
+    top: 50px;
+    left: 10px;
+}
+
+/* 것 : 그룹에서 가장 아래로 뚝 떨어짐 */
+/* 글자 이미지들이 강제로 중앙에 뭉치는 것을 방지 + 간격 줄이기 */
+
+#introContainer .text-flex-container img.wobble-target {
+    position: relative;
+    transform: none;
+
+    /* 💡 음수 값을 넣어 글자들을 왼쪽으로 바짝 당겨 겹치게 만듭니다 */
+    margin-left: -20px;
+    /* -10px, -20px 등으로 숫자를 조절해 보세요 */
+}
+
+/* 1. 완: 위로 솟구치며 왼쪽으로 심하게 갸우뚱 */
+@keyframes move1 {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    33% {
+        transform: translate(-8px, -12px) rotate(-15deg) scale(0.95, 1.05);
+    }
+
+    66% {
+        transform: translate(4px, 5px) rotate(5deg) scale(1.05, 0.95);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+/* 2. 벽: 제자리에서 납작하게 찌부러졌다가 뾰족하게 늘어나기 */
+@keyframes move2 {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    33% {
+        transform: translateY(10px) scale(1.2, 0.8);
+    }
+
+    66% {
+        transform: translateY(-15px) scale(0.8, 1.2);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 3. 하: 점프 없이 좌우로 크게 뒤뚱뒤뚱 (오뚝이 느낌) */
+@keyframes move3 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-2px) rotate(-20deg);
+    }
+
+    66% {
+        transform: translateY(-2px) rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* 4. 지: 오른쪽 사선 방향으로 튀어오르기 */
+@keyframes move4 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(12px, -15px) rotate(15deg) scale(0.9, 1.1);
+    }
+
+    66% {
+        transform: translate(-5px, 8px) rotate(-5deg) scale(1.1, 0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* 5. 않: 짧고 빠르게 덜덜덜덜 떨기 */
+@keyframes move5 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-4px, -4px) rotate(-8deg);
+    }
+
+    50% {
+        transform: translate(4px, 4px) rotate(8deg);
+    }
+
+    75% {
+        transform: translate(-3px, 3px) rotate(-5deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* 6. 은: 바닥에 찰싹 붙어서 양옆으로 퍼지기 (슬라임 느낌) */
+@keyframes move6 {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(12px) scale(1.25, 0.75) rotate(-3deg);
+    }
+
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+/* 7. 것: 머리를 크게 끄덕이며 펄쩍 뛰기 */
+@keyframes move7 {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+
+    66% {
+        transform: translateY(5px) rotate(-15deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* 마우스 인식 범위를 전체 그룹으로 확장 */
+.title-group:hover .p1 {
+    animation: move1 0.45s infinite steps(3) 0.00s;
+}
+
+.title-group:hover .p2 {
+    animation: move2 0.60s infinite steps(3) 0.05s;
+}
+
+.title-group:hover .p3 {
+    animation: move3 0.50s infinite steps(3) 0.12s;
+}
+
+.title-group:hover .p4 {
+    animation: move4 0.55s infinite steps(3) 0.08s;
+}
+
+.title-group:hover .p5 {
+    animation: move5 0.30s infinite steps(4) 0.15s;
+}
+
+.title-group:hover .p6 {
+    animation: move6 0.65s infinite steps(2) 0.02s;
+}
+
+.title-group:hover .p7 {
+    animation: move7 0.50s infinite steps(3) 0.10s;
+}
+
+#introContainer img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+
+
+
+
+/* =========================================
+   버튼 그룹 기본 & 이펙트 설정
+========================================= */
+.char-btn {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+}
+
+.char-btn:hover {
+    transform: scale(1.15) !important;
+    z-index: 20;
+}
+
+.char-btn .char-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: flex;
+    object-fit: contain;
+    filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.647));
+}
+
+/* 2. 이펙트 공통 설정 (자동 중앙 정렬 관련 속성 모두 삭제) */
+.char-btn .effect-img {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.char-btn:hover .effect-img {
+    opacity: 1;
+}
+
+
+.btn-dew {
+    top: 44%;
+    left: 10%;
+    width: 258px;
+}
+
+.btn-dew .effect-img {
+    margin-top: -37%;
+    margin-left: -37%;
+    width: 441px;
+}
+
+.btn-sole {
+    top: 52%;
+    left: 32%;
+    width: 280px;
+}
+
+.btn-sole .effect-img {
+    margin-top: -37%;
+    margin-left: -25%;
+    width: 399px;
+}
+
+.btn-oyaji {
+    top: 15%;
+    left: 24%;
+    width: 261px;
+}
+
+.btn-oyaji .effect-img {
+    margin-top: -23%;
+    margin-left: -32%;
+    width: 398px;
+}
+
+.btn-metamong {
+    bottom: 4%;
+    left: 21%;
+    width: 317px;
+}
+
+.btn-metamong .effect-img {
+    margin-top: -15%;
+    margin-left: -24%;
+    width: 481px;
+}
+
+.btn-mkpk {
+    bottom: 1%;
+    right: 32%;
+    width: 272px;
+}
+
+.btn-mkpk .effect-img {
+    margin-top: -5%;
+    margin-left: -24%;
+    width: 404px;
+}
+
+.btn-blobby {
+    bottom: 10%;
+    right: 10%;
+    width: 252px;
+}
+
+.btn-blobby .effect-img {
+    margin-top: -45%;
+    margin-left: -42%;
+    width: 422px;
+}
+
+.btn-fuggler {
+    top: 18%;
+    right: 27%;
+    width: 312px;
+}
+
+
+.btn-fuggler .effect-img {
+    margin-top: -25%;
+    margin-left: -37%;
+    width: 463px;
+}
+
+.btn-mk {
+    top: 20%;
+    right: 12%;
+    width: 242px;
+}
+
+.btn-mk .effect-img {
+    margin-top: -10%;
+    margin-left: -50%;
+    width: 497px;
+}
+
+@keyframes floatChar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.char-btn:hover .char-img {
+    animation: floatChar 1.5s ease-in-out infinite;
+}
+#charContainer {
+    width: 1420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.char-section {
+    width: 100%;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 100px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.hint-bubble {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.408);
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    pointer-events: none;
+    /* 말풍선 위를 클릭해도 아래 이미지가 클릭되도록 함 */
+    z-index: 50;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    animation: floatHint 1.5s ease-in-out infinite;
+    /* 위아래로 둥둥 */
+}
+
+
+/* 각 캐릭터별 힌트 위치 미세조정 */
+#dew .hint-bubble {
+    top: 75%;
+}
+
+#oyaji .hint-bubble {
+    top: 15%;
+}
+
+/* 오야지치 정수리 머리카락 근처 */
+#metamong .hint-bubble {
+    top: 110%;
+}
+
+/* --- 상호작용 발생 시 힌트 숨기기 --- */
+/* 듀 가나디: 클릭 시 */
+.dew-container.active .hint-bubble {
+    opacity: 0;
+}
+
+/* 오야지치: 머리카락이 뽑히거나 당기는 중일 때 */
+.oyaji-container.active .hint-bubble,
+.oyaji-container.is-dragging .hint-bubble {
+    opacity: 0;
+}
+
+/* 메타몽: 변신 상태(state-1, state-2)일 때 */
+.metamong-container.state-1 .hint-bubble,
+.metamong-container.state-2 .hint-bubble {
+    opacity: 0;
+}
+
+/* --- 듀 가나디 섹션 --- */
+#dew {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dew-container {
+    position: relative;
+    width: 1420px;
+    height: 800px;
+    cursor: pointer;
+}
+
+.dew-container img {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 2;
+}
+
+.dew-container .dew-eyes {
+    top: 30%;
+}
+
+.dew-container .dew-mouth {
+    top: 60%;
+}
+
+.dew-container.active .dew-eyes {
+    top: 0%;
+}
+
+.dew-container.active .dew-mouth {
+    top: 100%;
+}
+
+.dew-container.active .dew-desc {
+    opacity: 1;
+}
+
+.dew-desc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'OngleipKonkon', sans-serif;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    z-index: 1;
+    pointer-events: none;
+    width: 100%;
+}
+
+.dew-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dew-desc .sub-title {
+    display: block;
+    /* span 태그가 줄바꿈을 하고 여백을 가질 수 있도록 변경 */
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.5rem;
+    color: #555;
+    /* 제목보다 살짝 연한 색으로 구분 */
+    margin-bottom: 25px;
+}
+
+.dew-desc>p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    word-break: keep-all;
+}
+
+#tongueSole {
+    background-color: transparent;
+    /* 스크롤용 속성을 제거하여 기존 .char-section의 1080px 높이를 자연스럽게 따라갑니다. */
+}
+
+/* 좌우 텍스트와 이미지를 나란히 배치하는 레이아웃 */
+#tongueSole .scroll-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+    margin-top: 150px;
+}
+
+/* 좌우 텍스트 패널 */
+#tongueSole .text-panel {
+    width: 300px;
+    word-break: keep-all;
+}
+
+.tonguesole-title {
+    position: absolute;
+    top: 12%;
+    /* 상단에서 얼만큼 띄울지 %로 조절하세요 */
+    left: 50%;
+    transform: translateX(-50%);
+    /* 정확히 가운데 정렬하는 마법의 속성 */
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 3.5rem;
+    /* 중앙 타이틀이니 약간 더 크게 설정 */
+    color: #333;
+    margin: 0;
+    z-index: 10;
+}
+
+#tongueSole .text-panel h3 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #333;
+    line-height: 1.3;
+}
+
+#tongueSole .text-panel p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.7;
+}
+
+/* 중앙 이미지 패널 */
+#tongueSole .image-panel {
+    width: 400px;
+    height: 700px;
+    /* 큼직한 비율 유지 */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    /* 3D 효과를 위한 원근감 (필수) */
+    cursor: pointer;
+    /* 마우스가 올라가면 클릭할 수 있을 것처럼 포인터 변경 */
+}
+
+/* 3D 회전이 적용될 래퍼 */
+#tongueSole .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 앞/뒷면 입체감 유지 */
+    /* 회전 애니메이션: 끝에서 살짝 통통 튀는 젤리 같은 곡선(cubic-bezier) 적용 */
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 🔥 마우스 호버 시 Y축으로 180도 생선 뒤집기 🔥 */
+#tongueSole .image-panel:hover .image-wrapper {
+    transform: rotateY(180deg);
+}
+
+/* 이미지 공통 설정 */
+#tongueSole .fish-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    backface-visibility: hidden;
+    /* 회전해서 뒷면이 되면 안 보이게 숨김 처리 */
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.15));
+    /* 살짝 떠 있는 듯한 그림자 */
+}
+
+/* 앞면 (실물 박대) */
+#tongueSole .fish-img.real {
+    transform: rotateY(0deg);
+}
+
+/* 뒷면 (마스코트 박대) - 미리 180도 돌려놓음 */
+#tongueSole .fish-img.mascot {
+    transform: rotateY(180deg);
+}
+
+#oyaji {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.oyaji-container {
+    position: relative;
+    width: 1420px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+/* 캔버스를 이미지 위로 띄움 */
+#hairCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: grab;
+}
+
+#hairCanvas:active {
+    cursor: grabbing;
+}
+
+.oyaji-container img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1420px;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+    /* 이미지가 마우스 이벤트를 막지 않도록 */
+}
+
+.oyaji-angry {
+    opacity: 0;
+}
+
+/* 뽑힌 후(active) 상태 */
+.oyaji-container.active .oyaji-normal {
+    opacity: 0;
+}
+
+.oyaji-container.active .oyaji-angry {
+    opacity: 1;
+}
+
+.oyaji-container.active #hairCanvas {
+    pointer-events: none;
+    /* 뽑힌 후엔 클릭 안 되게 */
+    opacity: 0;
+    /* 캔버스 숨김 */
+    transition: opacity 0.3s;
+}
+
+.oyaji-desc {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.7s ease 0.2s;
+    z-index: 10;
+    width: 80%;
+    pointer-events: none;
+}
+
+.oyaji-container.active .oyaji-desc {
+    opacity: 1;
+}
+
+.oyaji-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.oyaji-desc h3 {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.oyaji-desc p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    word-break: keep-all;
+
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- 메타몽 섹션 --- */
+#metamong {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.metamong-container {
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 이미지 공통 설정 */
+.metamong-container .meta-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+/* 상태별 이미지 표시 (순서대로 1, 2, 3 표시) */
+.metamong-container.state-0 .meta-1 {
+    opacity: 1;
+}
+
+.metamong-container.state-1 .meta-2 {
+    opacity: 1;
+}
+
+.metamong-container.state-2 .meta-3 {
+    opacity: 1;
+}
+
+/* 텍스트 영역 */
+.metamong-desc {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 65%;
+    opacity: 1;
+    transition: opacity 0.5s ease 0.2s;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 변신했을 때(state-1, state-2) 텍스트가 나타나게 함 */
+.metamong-container.state-1 .metamong-desc,
+.metamong-container.state-2 .metamong-desc {
+    opacity: 1;
+}
+
+.metamong-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.metamong-desc h3 {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.metamong-desc p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+
+/* 뾰잉 애니메이션 */
+@keyframes boingEffect {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.05) scaleY(0.9);
+    }
+
+    50% {
+        transform: scale(0.95) scaleY(1.05);
+    }
+
+    70% {
+        transform: scale(1.02) scaleY(0.98);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.boing-anim {
+    animation: boingEffect 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* =========================================
+   매카패카 섹션
+========================================= */
+#mkpk {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.mkpk-container {
+    position: relative;
+    width: 1420px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+/* 힌트 말풍선: 이미지 바로 위쪽에 배치 */
+.mkpk-container .hint-bubble {
+    top: 15%; 
+    z-index: 60;
+    transition: opacity 0.8s ease;
+    background-color: #00000060;
+}
+
+.mkpk-container.revealed .hint-bubble {
+    opacity: 0;
+}
+
+/* --- 이미지 그룹 (하단 중앙) --- */
+.image-group {
+    position: absolute;
+    
+    /* 👇 숫자를 줄이거나 마이너스(-) 값을 넣으면 아래로 내려갑니다 (기존 5%) */
+    bottom: -3%; 
+    
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+/* 1층: 매카패카 얼굴 */
+.mkpk-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.15));
+    opacity: 0; 
+    transition: opacity 1.5s ease;
+}
+
+/* 2, 3층 묶음: 돌멩이와 흙먼지 */
+.stone-group {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 부모 영역의 정중앙에 배치 */
+    
+    /* 👇 여기서 원하는 크기로 조절하세요 (원래는 100%로 450px 꽉 차게 설정되어 있었음) */
+    width: 677px; 
+    height: 736px; 
+    
+    z-index: 10;
+    transition: opacity 1.5s ease; 
+}
+
+/* 2층: 깨끗한 돌멩이 이미지 */
+.clean-stone-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 이미지가 잘리지 않고 원본 형태 그대로 쏙 들어가도록 수정 */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* 돌멩이 모양을 따라 자연스러운 그림자 생성 */
+}
+
+/* 3층: 닦을 캔버스 */
+#dirtCanvas {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    
+    /* 👇 이미지 크기를 64x64로 줄였다고 가정했을 때의 설정 */
+    cursor: url('img/mkpkSponge.png') 32 32, pointer;
+}
+
+#dirtCanvas:active {
+    cursor: url('img/mkpkBubble.png') 32 32, pointer;
+}
+
+/* --- 닦기 완료 시 상태 변화 --- */
+.mkpk-container.revealed .stone-group {
+    opacity: 0; 
+    pointer-events: none;
+}
+
+.mkpk-container.revealed .mkpk-img {
+    opacity: 1; 
+}
+
+/* --- 텍스트 영역 (오야지치처럼 상단 중앙) --- */
+.mkpk-desc {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+    max-width: 950px;
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.5s ease 0.4s;
+}
+
+.mkpk-container.revealed .mkpk-desc {
+    opacity: 1;
+}
+
+.mkpk-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 3.3rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.mkpk-desc .sub-title {
+    display: block;
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.6rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.mkpk-desc p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.3;
+    margin: 0 auto 15px auto; /* 오야지치처럼 텍스트 중앙 정렬 유지 */
+    word-break: keep-all;
+}
+
+/* =========================================
+   매카패카 거품(Foam) 이펙트 - 이미지 사용
+========================================= */
+.foam-bubble {
+    position: absolute;
+    pointer-events: none;
+    z-index: 30;
+    
+    /* 💡 JS에서 이미지를 넣어주므로 background-image는 지웁니다! */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    animation: dripFoam 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* 애니메이션은 기존과 동일하게 유지 */
+@keyframes dripFoam {
+    0% { 
+        transform: scale(0.5) translateY(0); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: scale(1.3) translateY(40px); 
+        opacity: 0; 
+    }
+}
+
+
+/* =========================================
+   미스터 블로비 섹션
+========================================= */
+#mrB {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.mrb-container {
+    position: relative;
+    width: 1420px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.mrb-face {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1920px;
+    height: 1080px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+.mrb-eye {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.mrb-eye-left {
+    left: 271px;
+    top: 480px;
+    width: 248px;   /* 기존 236px */
+    height: 218px;  /* 기존 208px */
+}
+.mrb-eye-right {
+    left: 934px;
+    top: 304px;
+    width: 246px;   /* 기존 234px */
+    height: 228px;  /* 기존 218px */
+}
+
+.mrb-pupil {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    pointer-events: none;
+    user-select: none;
+}
+
+.mrb-desc {
+    position: absolute;
+    top: 145px;
+    left: 1194px;
+    width: 214px;
+    text-align: left;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.mrb-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 400;
+    margin: 0 0 18px 0;
+    color: #111111;
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+.mrb-desc .sub-title {
+    display: block;
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #111111;
+    line-height: 1.35;
+    margin-bottom: 20px;
+    word-break: keep-all;
+}
+
+.mrb-desc p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 0.94rem;
+    color: #111111;
+    line-height: 1.42;
+    margin: 0 0 16px 0;
+    word-break: keep-all;
+}
+
+.mrb-desc p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   퍼글러 섹션
+========================================= */
+#fug {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.fug-container {
+    position: relative;
+    width: 1420px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.fug-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+#fug .hint-bubble {
+    top: 295px;
+    left: 1125px;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.fug-container.pulled .hint-bubble {
+    opacity: 0;
+}
+
+.fug-tooth {
+    position: absolute;
+    left: 964px;
+    top: 351px;
+    width: 218px;
+    height: 241px;
+    z-index: 3;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-drag: none;
+    transform-origin: 62% 18%;
+    animation: toothWobble 1.2s ease-in-out infinite;
+    transition: filter 0.2s ease;
+}
+
+.fug-tooth:hover {
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45)) brightness(1.04);
+}
+
+.fug-tooth.pulled {
+    pointer-events: none;
+    animation: toothPopOut 0.85s forwards;
+}
+
+@keyframes toothWobble {
+    0%, 100% {
+        transform: rotate(0deg) translate(0, 0);
+    }
+    15% {
+        transform: rotate(-6deg) translate(-2px, 2px);
+    }
+    30% {
+        transform: rotate(5deg) translate(2px, -1px);
+    }
+    45% {
+        transform: rotate(-5deg) translate(-1px, 2px);
+    }
+    60% {
+        transform: rotate(4deg) translate(1px, -1px);
+    }
+    75% {
+        transform: rotate(-2deg) translate(0, 1px);
+    }
+}
+
+@keyframes toothPopOut {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    18% {
+        transform: translate(-14px, 32px) rotate(-12deg) scale(1.06);
+        opacity: 1;
+        animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+    }
+    75% {
+        transform: translate(-38px, 480px) rotate(-48deg) scale(0.95);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50px, 760px) rotate(-70deg) scale(0.85);
+        opacity: 0;
+    }
+}
+
+.fug-desc {
+    position: absolute;
+    top: 430px;
+    left: 200px;
+    width: 300x;
+    text-align:left;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.fug-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+.fug-desc .sub-title {
+    display: block;
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.6rem;
+    color: #ffe8d6;
+    line-height: 1.38;
+    margin-bottom: 14px;
+    word-break: keep-all;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+.fug-desc p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    color: #fff8f2;
+    line-height: 1.42;
+    margin: 0 0 10px 0;
+    word-break: keep-all;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.fug-desc p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================================
+   먀쿠먀쿠 섹션
+========================================= */
+#mk {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.mk-container {
+    position: relative;
+    width: 1420px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.mk-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+.mk-eye {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.mk-eye-1 {
+    left: 774.5px;
+    top: 140.5px;
+    width: 184px;
+    height: 184px;
+}
+
+.mk-eye-2 {
+    left: 990.5px;
+    top: 330.5px;
+    width: 142px;
+    height: 136px;
+}
+
+.mk-eye-3 {
+    left: 96.5px;
+    top: 523px;
+    width: 152px;
+    height: 151px;
+}
+
+.mk-eye-4 {
+    left: 440.5px;
+    top: 853.5px;
+    width: 224px;
+    height: 224px;
+}
+
+.mk-eye-5 {
+    left: 1276px;
+    top: 870.5px;
+    width: 183px;
+    height: 176px;
+}
+
+.mk-pupil {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    pointer-events: none;
+    user-select: none;
+}
+
+.mk-pupil-1 {
+    width: 54px;
+    height: 54px;
+}
+
+.mk-pupil-2 {
+    width: 72px;
+    height: 72px;
+}
+
+.mk-pupil-3 {
+    width: 53px;
+    height: 53px;
+}
+
+.mk-pupil-4 {
+    width: 137px;
+    height: 137px;
+}
+
+.mk-pupil-5 {
+    width: 69px;
+    height: 69px;
+}
+
+.mk-desc {
+    position: absolute;
+    top: 465px;
+    left: 525px;
+    width: 610px;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.mk-desc h2 {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 0 0 6px 0;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.mk-desc .sub-title {
+    display: block;
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.25rem;
+    color: #dbeafe;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    word-break: keep-all;
+}
+
+.mk-desc p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.05rem;
+    color: #ffffff;
+    line-height: 1.48;
+    margin: 0 0 10px 0;
+    word-break: keep-all;
+}
+
+.mk-desc p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- 아웃트로 및 푸터 --- */
+.glass-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+    z-index: 10;
+}
+
+
+
+.glass-box p {
+    font-family: 'OngleipKonkon', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #000000;
+    margin: 0;
+    word-break: keep-all;
+}
+
+.highlight {
+    font-weight: 700;
+}
+
+#footer {
+    font-family: 'NostalgicGukhanbakLovely', sans-serif;
+    width: 1420px;
+    padding: 100px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#footer p {
+    padding: 3px 0;
+    margin: 0;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+/* =========================================
+   공통 스테이지 래퍼 & 터치 보조 상태 (데스크탑 동일 유지)
+========================================= */
+.mrb-stage,
+.fug-stage,
+.mk-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.mrb-stage {
+    overflow: hidden;
+}
+
+.title-group.is-wobbling .p1 {
+    animation: move1 0.45s infinite steps(3) 0.00s;
+}
+
+.title-group.is-wobbling .p2 {
+    animation: move2 0.60s infinite steps(3) 0.05s;
+}
+
+.title-group.is-wobbling .p3 {
+    animation: move3 0.50s infinite steps(3) 0.12s;
+}
+
+.title-group.is-wobbling .p4 {
+    animation: move4 0.55s infinite steps(3) 0.08s;
+}
+
+.title-group.is-wobbling .p5 {
+    animation: move5 0.30s infinite steps(4) 0.15s;
+}
+
+.title-group.is-wobbling .p6 {
+    animation: move6 0.65s infinite steps(2) 0.02s;
+}
+
+.title-group.is-wobbling .p7 {
+    animation: move7 0.50s infinite steps(3) 0.10s;
+}
+
+#tongueSole .tongue-hint {
+    display: none;
+}
+
+.m-br {
+    display: none;
+}
+
+#tongueSole .image-panel.flipped .image-wrapper {
+    transform: rotateY(180deg);
+}
+
+.oyaji-desc p {
+    margin: 0 auto 12px auto;
+}
+
+.oyaji-desc p:last-child {
+    margin-bottom: 0;
+}
+
+#tongueSole .text-panel p {
+    margin: 0 0 18px 0;
+}
+
+#tongueSole .text-panel p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   반응형: 아이패드(가로 768px 기준) 및 모바일
+========================================= */
+@keyframes move1Mobile {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33% { transform: translate(-4px, -7px) rotate(-15deg) scale(0.95, 1.05); }
+    66% { transform: translate(2px, 3px) rotate(5deg) scale(1.05, 0.95); }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+@keyframes move2Mobile {
+    0% { transform: translateY(0) scale(1); }
+    33% { transform: translateY(5px) scale(1.2, 0.8); }
+    66% { transform: translateY(-8px) scale(0.8, 1.2); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes move3Mobile {
+    0% { transform: rotate(0deg); }
+    33% { transform: translateY(-1px) rotate(-20deg); }
+    66% { transform: translateY(-1px) rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes move4Mobile {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(6px, -8px) rotate(15deg) scale(0.9, 1.1); }
+    66% { transform: translate(-3px, 4px) rotate(-5deg) scale(1.1, 0.9); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes move5Mobile {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-2px, -2px) rotate(-8deg); }
+    50% { transform: translate(2px, 2px) rotate(8deg); }
+    75% { transform: translate(-2px, 2px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes move6Mobile {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    50% { transform: translateY(6px) scale(1.25, 0.75) rotate(-3deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes move7Mobile {
+    0% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(10deg); }
+    66% { transform: translateY(3px) rotate(-15deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        scroll-snap-type: y proximity;
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
+        background-image: none;
+        background-attachment: scroll;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url('img/paper.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .pc-br {
+        display: none;
+    }
+
+    .m-br,
+    .mrb-desc br.m-br {
+        display: inline;
+    }
+
+    h2, h3, .sub-title {
+        word-break: keep-all;
+        text-wrap: balance;
+    }
+
+    p {
+        word-break: keep-all;
+        text-wrap: pretty;
+    }
+
+    header {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        padding: 14px 20px;
+        box-sizing: border-box;
+        align-items: center;
+    }
+
+    .logobox a {
+        display: inline-block;
+    }
+
+    .logobox img {
+        height: 44px;
+        width: auto;
+        display: block;
+    }
+
+    /* =====================================================
+       📱 모바일(768px 아이패드 세로 3:4) 메인 배경 이미지 교체 위치
+       - 권장 사이즈: 768 x 1024px
+       - 새 이미지를 img/ 폴더에 넣은 후 아래 주석 처리된 줄로 교체하세요.
+       ===================================================== */
+    #introContainer,
+    #mainContainer,
+    #outroContainer {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        min-height: 540px;
+        margin: 0 auto;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #introContainer,
+    #outroContainer {
+        background-image: url('img/mainback.png');
+        /* background-image: url('img/mainback_m.png'); */
+    }
+
+    #mainContainer {
+        background-image: url('img/mainOpacity.png');
+        /* background-image: url('img/mainOpacity_m.png'); */
+    }
+
+    /* 인트로 타이틀 & 흔들리는 글자 */
+    #introContainer .title-group {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1366 / 768;
+        cursor: pointer;
+    }
+
+    #introContainer .base-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    #introContainer .text-flex-container {
+        top: 46.5%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+        width: 46%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #introContainer .text-flex-container img.wobble-target {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 17%;
+        height: auto;
+        margin-left: -3%;
+        flex-shrink: 0;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p1 {
+        margin-left: 0;
+        top: 1.4vw;
+        left: -0.4vw;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p2 {
+        top: -2.1vw;
+        left: -0.2vw;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p3 {
+        top: 0.7vw;
+        left: 0;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p4 {
+        top: 2.1vw;
+        left: 0.2vw;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p5 {
+        top: -1vw;
+        left: 0.4vw;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p6 {
+        top: 1vw;
+        left: 0.6vw;
+    }
+
+    #introContainer .text-flex-container img.wobble-target.p7 {
+        top: 3.5vw;
+        left: 0.4vw;
+    }
+
+    .title-group:hover .p1,
+    .title-group.is-wobbling .p1 { animation: move1Mobile 0.45s infinite steps(3) 0.00s; }
+    .title-group:hover .p2,
+    .title-group.is-wobbling .p2 { animation: move2Mobile 0.60s infinite steps(3) 0.05s; }
+    .title-group:hover .p3,
+    .title-group.is-wobbling .p3 { animation: move3Mobile 0.50s infinite steps(3) 0.12s; }
+    .title-group:hover .p4,
+    .title-group.is-wobbling .p4 { animation: move4Mobile 0.55s infinite steps(3) 0.08s; }
+    .title-group:hover .p5,
+    .title-group.is-wobbling .p5 { animation: move5Mobile 0.30s infinite steps(4) 0.15s; }
+    .title-group:hover .p6,
+    .title-group.is-wobbling .p6 { animation: move6Mobile 0.65s infinite steps(2) 0.02s; }
+    .title-group:hover .p7,
+    .title-group.is-wobbling .p7 { animation: move7Mobile 0.50s infinite steps(3) 0.10s; }
+
+    /* 메인 캐릭터 허브 (768 x 1024 세로 4단 배치 - 새 배경 작업 시 좌표 참고) */
+    .char-btn:active {
+        transform: scale(1.12) !important;
+        z-index: 20;
+    }
+
+    .char-btn:active .effect-img {
+        opacity: 1;
+    }
+
+    /* 왼쪽 라인 (위 -> 아래): 듀 가나디, 박대, 오야지치, 메타몽 */
+    .btn-dew {
+        top: 10%;
+        left: 13%;
+        right: auto;
+        bottom: auto;
+        width: 21.5%;
+    }
+    .btn-dew .effect-img {
+        width: 171%;
+        margin-top: -37%;
+        margin-left: -37%;
+    }
+
+    .btn-sole {
+        top: 35%;
+        left: 10%;
+        right: auto;
+        bottom: auto;
+        width: 28%;
+    }
+    .btn-sole .effect-img {
+        width: 142.5%;
+        margin-top: -37%;
+        margin-left: -25%;
+    }
+
+    .btn-oyaji {
+        top: 51%;
+        left: 13.5%;
+        right: auto;
+        bottom: auto;
+        width: 21%;
+    }
+    .btn-oyaji .effect-img {
+        width: 152.5%;
+        margin-top: -23%;
+        margin-left: -32%;
+    }
+
+    .btn-metamong {
+        top: 75%;
+        left: 12%;
+        right: auto;
+        bottom: auto;
+        width: 24%;
+    }
+    .btn-metamong .effect-img {
+        width: 151.7%;
+        margin-top: -15%;
+        margin-left: -24%;
+    }
+
+    /* 오른쪽 라인 (위 -> 아래): 매카패카, 미스터 블로비, 퍼글러, 먀쿠먀쿠 */
+    .btn-mkpk {
+        top: 9%;
+        left: auto;
+        right: 14%;
+        bottom: auto;
+        width: 20.5%;
+    }
+    .btn-mkpk .effect-img {
+        width: 148.5%;
+        margin-top: -5%;
+        margin-left: -24%;
+    }
+
+    .btn-blobby {
+        top: 31.5%;
+        left: auto;
+        right: 14.5%;
+        bottom: auto;
+        width: 18.5%;
+    }
+    .btn-blobby .effect-img {
+        width: 167.5%;
+        margin-top: -45%;
+        margin-left: -42%;
+    }
+
+    .btn-fuggler {
+        top: 53.5%;
+        left: auto;
+        right: 13%;
+        bottom: auto;
+        width: 22.5%;
+    }
+    .btn-fuggler .effect-img {
+        width: 148.4%;
+        margin-top: -25%;
+        margin-left: -37%;
+    }
+
+    .btn-mk {
+        top: 74%;
+        left: auto;
+        right: 14.5%;
+        bottom: auto;
+        width: 18.5%;
+    }
+    .btn-mk .effect-img {
+        width: 205.4%;
+        margin-top: -10%;
+        margin-left: -50%;
+    }
+
+    /* 아웃트로 & 푸터 */
+    .glass-box {
+        width: 84%;
+        max-width: 540px;
+        padding: 36px 28px;
+        box-sizing: border-box;
+    }
+
+    .glass-box p {
+        font-size: 1.02rem;
+        line-height: 1.78;
+    }
+
+    #footer {
+        width: 100%;
+        max-width: 768px;
+        padding: 48px 24px;
+        box-sizing: border-box;
+    }
+
+    #footer p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    /* 캐릭터 상세 페이지 공통 */
+    #charContainer {
+        width: 100%;
+        max-width: 768px;
+    }
+
+    .char-section {
+        height: auto;
+        min-height: 100dvh;
+        padding: 88px 24px 48px;
+        box-sizing: border-box;
+    }
+
+    .hint-bubble {
+        font-size: 1.05rem;
+        padding: 7px 16px;
+        white-space: nowrap;
+    }
+
+    /* 1. 듀 가나디 */
+    #dew.char-section {
+        padding: 88px 20px 40px;
+    }
+
+    .dew-container {
+        width: 100%;
+        max-width: 768px;
+        height: clamp(540px, 94vw, 720px);
+    }
+
+    .dew-container img {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+    }
+
+    .dew-container .dew-eyes {
+        top: 34%;
+    }
+
+    .dew-container .dew-mouth {
+        top: 58%;
+    }
+
+    .dew-container.active .dew-eyes {
+        top: 8%;
+    }
+
+    .dew-container.active .dew-mouth {
+        top: 92%;
+    }
+
+    #dew .hint-bubble {
+        top: 72%;
+    }
+
+    .dew-desc {
+        width: 88%;
+        max-width: 540px;
+    }
+
+    .dew-desc h2 {
+        font-size: 2.3rem;
+        margin: 0 0 8px;
+    }
+
+    .dew-desc .sub-title {
+        font-size: 1.25rem;
+        margin-bottom: 16px;
+    }
+
+    .dew-desc > p {
+        font-size: 1rem;
+        line-height: 1.65;
+        margin-bottom: 18px;
+    }
+
+    .dew-desc .history h4 {
+        font-size: 1.15rem;
+        margin: 0 0 6px;
+    }
+
+    .dew-desc .history p {
+        font-size: 0.98rem;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    /* 2. 군산 박대 */
+    #tongueSole.char-section {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 84px 36px 56px;
+    }
+
+    #tongueSole .scroll-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 36px;
+        row-gap: 16px;
+        max-width: 660px;
+        justify-items: center;
+        align-items: start;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    #tongueSole .tongue-hint {
+        display: inline-block;
+        grid-column: 1 / -1;
+        grid-row: 1;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 0 auto 4px;
+    }
+
+    #tongueSole .image-panel {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 200px;
+        height: 410px;
+        touch-action: pan-y;
+        user-select: none;
+    }
+
+    #tongueSole .fish-img {
+        -webkit-user-drag: none;
+    }
+
+    #tongueSole .image-panel:hover .image-wrapper {
+        transform: none;
+    }
+
+    #tongueSole .image-panel.flipped .image-wrapper {
+        transform: rotateY(180deg);
+    }
+
+    .tonguesole-title {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 8px 0 10px;
+        word-break: keep-all;
+    }
+
+    #tongueSole .text-panel {
+        width: 100%;
+    }
+
+    #tongueSole .left-panel {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    #tongueSole .right-panel {
+        grid-column: 2;
+        grid-row: 4;
+    }
+
+    #tongueSole .text-panel h3 {
+        font-size: 1.3rem;
+        margin-bottom: 14px;
+    }
+
+    #tongueSole .text-panel p {
+        font-size: 0.96rem;
+        line-height: 1.62;
+        margin: 0 0 14px 0;
+    }
+
+    #tongueSole .text-panel p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 3. 오야지치 */
+    #oyaji.char-section {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    .oyaji-container {
+        width: 100%;
+        max-width: 768px;
+        height: 100dvh;
+        min-height: 760px;
+    }
+
+    .oyaji-container img {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+    }
+
+    .oyaji-desc {
+        top: auto;
+        bottom: min(calc(50.5vw + 36px), 426px);
+        width: 86%;
+        max-width: 540px;
+    }
+
+    .oyaji-desc h2 {
+        font-size: 2.3rem;
+        margin: 0 0 6px;
+    }
+
+    .oyaji-desc h3 {
+        font-size: 1.25rem;
+        margin: 0 0 16px;
+    }
+
+    .oyaji-desc p {
+        font-size: 1rem;
+        line-height: 1.68;
+        margin: 0 auto 12px auto;
+    }
+
+    .oyaji-desc p:last-child {
+        margin-bottom: 0;
+    }
+
+    #oyaji .hint-bubble {
+        top: auto;
+        bottom: min(calc(50.5vw + 36px), 426px);
+    }
+
+    /* 4. 메타몽 */
+    #metamong.char-section {
+        padding: 90px 20px 48px;
+    }
+
+    .metamong-container {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        aspect-ratio: 1420 / 980;
+    }
+
+    #metamong .hint-bubble {
+        top: 103%;
+    }
+
+    .metamong-desc {
+        top: 57.5%;
+        width: 68%;
+        max-width: 480px;
+    }
+
+    .metamong-desc h2 {
+        font-size: 1.95rem;
+        margin: 0 0 4px;
+    }
+
+    .metamong-desc h3 {
+        font-size: 1.02rem;
+        margin: 0 0 10px;
+    }
+
+    .metamong-desc p {
+        font-size: 0.88rem;
+        line-height: 1.52;
+        margin: 0 0 8px 0;
+    }
+
+    .metamong-desc p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 5. 매카패카 */
+    #mkpk.char-section {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    .mkpk-container {
+        width: 100%;
+        max-width: 768px;
+        height: 100dvh;
+        min-height: 820px;
+    }
+
+    .mkpk-container .hint-bubble {
+        top: auto;
+        bottom: min(calc(8% + 63vw + 22px), 590px);
+    }
+
+    .mkpk-desc {
+        top: auto;
+        bottom: min(calc(52.5vw + 34px), 440px);
+        width: 86%;
+        max-width: 540px;
+    }
+
+    .mkpk-desc h2 {
+        font-size: 2.3rem;
+        margin: 0 0 6px;
+    }
+
+    .mkpk-desc .sub-title {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+
+    .mkpk-desc p {
+        font-size: 1rem;
+        line-height: 1.62;
+        margin-bottom: 0;
+    }
+
+    .image-group {
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .mkpk-img {
+        object-fit: contain;
+        object-position: bottom center;
+    }
+
+    .stone-group {
+        top: auto;
+        bottom: 8%;
+        width: 58%;
+        max-width: 440px;
+        height: auto;
+        aspect-ratio: 677 / 736;
+        transform: translateX(-50%);
+    }
+
+    #dirtCanvas {
+        left: 3%;
+    }
+
+    /* 6. 미스터 블로비 */
+    #mrB.char-section {
+        background: linear-gradient(180deg, #F5A1A6 0%, #F29BA2 50%, #EA858D 100%);
+        padding: 88px 24px 48px;
+        align-items: flex-start;
+    }
+
+    .mrb-container {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        overflow: visible;
+    }
+
+    .mrb-stage {
+        height: auto;
+        aspect-ratio: 1420 / 1080;
+        border-radius: 24px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+    }
+
+    .mrb-face {
+        width: 135.21%;
+        height: 100%;
+    }
+
+    .mrb-eye-left {
+        left: 19.08%;
+        top: 44.44%;
+        width: 17.46%;
+        height: 20.19%;
+    }
+
+    .mrb-eye-right {
+        left: 65.77%;
+        top: 28.15%;
+        width: 17.32%;
+        height: 21.11%;
+    }
+
+    .mrb-pupil {
+        width: 64.5%;
+    }
+
+    .mrb-desc {
+        position: static;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        pointer-events: auto;
+    }
+
+    .mrb-desc br {
+        display: none;
+    }
+
+    .mrb-desc h2 {
+        font-size: 2.3rem;
+        margin: 0 0 10px;
+        white-space: normal;
+    }
+
+    .mrb-desc .sub-title {
+        font-size: 1.15rem;
+        line-height: 1.45;
+        margin-bottom: 16px;
+    }
+
+    .mrb-desc p {
+        font-size: 1rem;
+        line-height: 1.65;
+        margin: 0 0 14px;
+    }
+
+    /* 7. 퍼글러 */
+    #fug.char-section {
+        background: linear-gradient(180deg, #5c1320 0%, #8A2232 50%, #4b0d17 100%);
+        padding: 88px 24px 48px;
+        align-items: flex-start;
+    }
+
+    .fug-container {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        overflow: visible;
+    }
+
+    .fug-stage {
+        height: auto;
+        aspect-ratio: 1420 / 1080;
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .fug-tooth {
+        left: 67.89%;
+        top: 32.50%;
+        width: 15.35%;
+        height: auto;
+    }
+
+    #fug .hint-bubble {
+        top: 22%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+    }
+
+    .fug-desc {
+        position: static;
+        width: 100%;
+        max-width: 520px;
+        text-align: center;
+        pointer-events: auto;
+    }
+
+    .fug-desc h2 {
+        font-size: 2.3rem;
+        margin: 0 0 8px;
+    }
+
+    .fug-desc .sub-title {
+        font-size: 1.22rem;
+        margin-bottom: 16px;
+    }
+
+    .fug-desc p {
+        font-size: 1rem;
+        line-height: 1.68;
+        margin: 0 0 12px 0;
+    }
+
+    .fug-desc p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 8. 먀쿠먀쿠 */
+    #mk.char-section {
+        background-color: #0850A7;
+        padding: 88px 24px 48px;
+        align-items: flex-start;
+    }
+
+    .mk-container {
+        width: 100%;
+        max-width: 768px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        overflow: visible;
+    }
+
+    .mk-stage {
+        height: auto;
+        aspect-ratio: 1420 / 1080;
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .mk-eye-1 { left: 54.54%; top: 13.01%; width: 12.96%; height: 17.04%; }
+    .mk-eye-2 { left: 69.75%; top: 30.60%; width: 10.00%; height: 12.59%; }
+    .mk-eye-3 { left: 6.80%; top: 48.43%; width: 10.70%; height: 13.98%; }
+    .mk-eye-4 { left: 31.02%; top: 79.03%; width: 15.77%; height: 20.74%; }
+    .mk-eye-5 { left: 89.86%; top: 80.60%; width: 12.89%; height: 16.30%; }
+
+    .mk-pupil-1 { width: 29.35%; height: auto; }
+    .mk-pupil-2 { width: 50.70%; height: auto; }
+    .mk-pupil-3 { width: 34.87%; height: auto; }
+    .mk-pupil-4 { width: 61.16%; height: auto; }
+    .mk-pupil-5 { width: 37.70%; height: auto; }
+
+    .mk-desc {
+        position: static;
+        width: 100%;
+        max-width: 520px;
+        text-align: center;
+        pointer-events: auto;
+    }
+
+    .mk-desc h2 {
+        font-size: 2.3rem;
+        margin: 0 0 8px;
+    }
+
+    .mk-desc .sub-title {
+        font-size: 1.18rem;
+        margin-bottom: 14px;
+    }
+
+    .mk-desc p {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+}
+
+/* 작은 스마트폰 화면 보조 대응 (600px 이하) */
+@media screen and (max-width: 600px) {
+    .logobox img {
+        height: 36px;
+    }
+
+    .glass-box {
+        width: 90%;
+        padding: 26px 20px;
+    }
+
+    .glass-box p {
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+
+    #tongueSole .scroll-container {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    #tongueSole .text-panel {
+        width: 100%;
+        text-align: center;
+    }
+
+    #tongueSole .left-panel,
+    #tongueSole .right-panel {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    #tongueSole .image-panel {
+        width: 180px;
+        height: 340px;
+    }
+
+    .metamong-container {
+        aspect-ratio: auto;
+        flex-direction: column;
+        padding-bottom: 24px;
+    }
+
+    .metamong-container .meta-1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+
+    .metamong-container .meta-2,
+    .metamong-container .meta-3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .metamong-desc {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 92%;
+        margin-top: 20px;
+    }
+
+    #metamong .hint-bubble {
+        top: auto;
+        bottom: -24px;
+    }
+}

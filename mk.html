@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- 타이틀에 캐릭터 이름을 추가해 주면 좋습니다 -->
+    <title>우리는 왜 완벽하지 않은 것에 환호하는가? - 먀쿠먀쿠</title>
+    <link rel="stylesheet" href="myStyle.css">
+    <script src="myScript.js" defer></script>
+</head>
+
+<body>
+    <!-- 공통 헤더 -->
+    <header>
+        <div class="logobox">
+            <a href="index.html#mainContainer">
+                <img src="img/oddclubW.png" alt="오드클럽">
+            </a>
+        </div>
+    </header>
+
+    <!-- 캐릭터 섹션 (이 페이지의 주인공 하나만 남깁니다) -->
+    <div id="charContainer">
+        <section id="mk" class="char-section">
+            <div class="mk-container" id="mkContainer">
+                <div class="mk-stage">
+                    <!-- 먀쿠먀쿠 배경 이미지 -->
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="img/mkBack_m.png">
+                        <img src="img/mkBack.png" alt="먀쿠먀쿠" class="mk-bg">
+                    </picture>
+
+                    <!-- 5개의 눈 (흰자 영역 안에 마우스를 따라 움직이는 눈동자 배치) -->
+                    <div class="mk-eye mk-eye-1" data-rest-x="-10" data-rest-y="55">
+                        <img src="img/mkeye1.png" alt="먀쿠먀쿠 위쪽 눈동자" class="mk-pupil mk-pupil-1">
+                    </div>
+
+                    <div class="mk-eye mk-eye-2" data-rest-x="-30" data-rest-y="-12">
+                        <img src="img/mkeye3.png" alt="먀쿠먀쿠 오른쪽 위 눈동자" class="mk-pupil mk-pupil-2">
+                    </div>
+
+                    <div class="mk-eye mk-eye-3" data-rest-x="10" data-rest-y="-28">
+                        <img src="img/mkeye2.png" alt="먀쿠먀쿠 왼쪽 눈동자" class="mk-pupil mk-pupil-3">
+                    </div>
+
+                    <div class="mk-eye mk-eye-4" data-rest-x="20" data-rest-y="-35">
+                        <img src="img/mkeye.png" alt="먀쿠먀쿠 왼쪽 아래 큰 눈동자" class="mk-pupil mk-pupil-4">
+                    </div>
+
+                    <div class="mk-eye mk-eye-5" data-rest-x="44" data-rest-y="10">
+                        <img src="img/mkeye4.png" alt="먀쿠먀쿠 오른쪽 아래 눈동자" class="mk-pupil mk-pupil-5">
+                    </div>
+                </div>
+
+                <!-- 캐릭터 설명 텍스트 -->
+                <div class="mk-desc">
+                    <h2>먀쿠먀쿠 (Myaku-Myaku)</h2>
+                    <span class="sub-title">붉은 세포와 푸른 물이 합쳐진 2025 오사카·간사이 엑스포 마스코트</span>
+                    <p>
+                        얼굴을 감싼 붉은 고리 곳곳에 크기와 위치가 제각각인 여러 개의 눈이 달려 있고,<br class="pc-br">
+                        물처럼 자유자재로 모습을 바꿀 수 있는 신비한 생명체다.
+                    </p>
+                    <p>
+                        처음엔 "기괴하고 무섭다"는 반응이 많았지만, 기존 귀여움의 틀을 깬<br class="pc-br">
+                        엉뚱하고 불완전한 생김새가 오히려 중독적인 매력으로 통하며 큰 사랑을 받았다.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>한경국립대학교 디자인예술스포츠학부 시각미디어디자인 | 박선유, 황혜원 | 지도교수 나상호</p>
+            <p>이 웹사이트는 디지털퍼블리싱2 수업의 일환으로 제작되었습니다. Copyright@Park Sunyu, Hwang Hyewon</p>
+        </div>
+    </footer>
+</body>
+
+</html>
