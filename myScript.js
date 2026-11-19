@@ -124,7 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
             headX = width / 2;
             headY = height - (renderedImgHeight * (600 / 980));
             defaultTipY = headY - (120 * scale);
-            breakDistance = Math.max(160, 400 * scale);
+            if (window.innerWidth <= 768) {
+                breakDistance = Math.max(210, headY - (height * 0.47));
+            } else {
+                breakDistance = Math.max(160, 400 * scale);
+            }
 
             if (!isDragging && !isBroken) {
                 tip.x = headX;
@@ -435,12 +439,14 @@ if (dirtCanvas && mkpkContainer) {
         const randomImage = foamImages[Math.floor(Math.random() * foamImages.length)];
         foam.style.backgroundImage = `url('${randomImage}')`;
 
-        const size = Math.random() * 30 + 40;
+        const isMobile = window.innerWidth <= 768;
+        const size = isMobile ? (Math.random() * 20 + 26) : (Math.random() * 30 + 40);
         foam.style.width = `${size}px`;
         foam.style.height = `${size}px`;
 
-        const offsetX = (Math.random() - 0.5) * 50;
-        const offsetY = (Math.random() - 0.5) * 50;
+        const spread = isMobile ? 32 : 50;
+        const offsetX = (Math.random() - 0.5) * spread;
+        const offsetY = (Math.random() - 0.5) * spread;
 
         foam.style.left = `${x + offsetX - size / 2}px`;
         foam.style.top = `${y + offsetY - size / 2}px`;
@@ -809,5 +815,66 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             applyEyePositions();
         }
+    });
+});
+
+
+// ==========================================
+// 7. 메인 컨테이너 진입 시 캐릭터 스르르 떠오름 + 모바일 젤리 탄성 터치 피드백
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const mainContainer = document.getElementById('mainContainer');
+    if (!mainContainer) return;
+
+    if ('IntersectionObserver' in window) {
+        const mainObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+                    mainContainer.classList.add('is-visible');
+                } else if (!entry.isIntersecting) {
+                    mainContainer.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: [0, 0.35]
+        });
+        mainObserver.observe(mainContainer);
+    } else {
+        mainContainer.classList.add('is-visible');
+    }
+
+    const charButtons = mainContainer.querySelectorAll('.char-btn');
+    if (charButtons.length === 0) return;
+
+    let isNavigating = false;
+
+    function isMobileMainMode() {
+        return window.innerWidth <= 768 || window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    }
+
+    charButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            if (!isMobileMainMode()) return;
+
+            const targetHref = btn.getAttribute('href');
+            if (!targetHref) return;
+
+            e.preventDefault();
+            if (isNavigating) return;
+            isNavigating = true;
+
+            charButtons.forEach((b) => b.classList.remove('jelly-pop'));
+            void btn.offsetWidth;
+            btn.classList.add('jelly-pop');
+
+            setTimeout(() => {
+                window.location.href = targetHref;
+            }, 580);
+        });
+    });
+
+    window.addEventListener('pageshow', () => {
+        isNavigating = false;
+        charButtons.forEach((b) => b.classList.remove('jelly-pop'));
     });
 });
